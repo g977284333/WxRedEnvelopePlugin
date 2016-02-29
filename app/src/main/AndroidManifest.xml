@@ -20,7 +20,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".databinding.activity.DataBinding1Activity"/>
     </application>
 
 </manifest>
