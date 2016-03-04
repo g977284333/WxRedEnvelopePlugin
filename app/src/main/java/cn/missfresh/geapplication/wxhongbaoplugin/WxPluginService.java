@@ -150,13 +150,27 @@ public class WxPluginService extends AccessibilityService {
         }
 
         // 由于微信把红包界面的文字“拆红包”替换成了图片“開”，所以现在无法打开红包
-        List<AccessibilityNodeInfo> unPackList = source.findAccessibilityNodeInfosByText("拆红包");
+//        List<AccessibilityNodeInfo> unPackList = source.findAccessibilityNodeInfosByText("拆红包");
+
+        // TODO: 16/3/4 测试 暂时匹配微信默认的恭喜发财的文字，如果改了，依然无法抢红包
+        List<AccessibilityNodeInfo> unPackList = source.findAccessibilityNodeInfosByText("恭喜发财");
+
         if (unPackList.isEmpty()) {
             back();
             return;
         } else {
             AccessibilityNodeInfo accessibilityNodeInfo = unPackList.get(0);
-            accessibilityNodeInfo.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+
+            // TODO: 16/3/4 测试 
+            AccessibilityNodeInfo parent = accessibilityNodeInfo.getParent();
+            int childCount = parent.getChildCount();
+            for (int i = 0; i < childCount; i++) {
+                AccessibilityNodeInfo child = parent.getChild(i);
+                child.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+            }
+
+
+//            accessibilityNodeInfo.performAction(AccessibilityNodeInfo.ACTION_CLICK);
         }
     }
 
