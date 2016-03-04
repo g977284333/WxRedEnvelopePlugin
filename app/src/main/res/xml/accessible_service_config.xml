@@ -8,5 +8,5 @@
     android:notificationTimeout="0"
     android:packageNames="com.tencent.mm" />
 
-    <!-- 1.允许接受的时间类型 2.设置返回用户的形式 3.指定响应某个制定应用 4.响应时间-->
+    <!-- 1.允许接受的事件类型 2.设置返回用户的形式 3.指定响应某个制定应用 4.响应时间-->
 
