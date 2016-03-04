@@ -31,6 +31,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         });
 
         findViewById(R.id.btn_runtime_view_inject).setOnClickListener(this);
+        findViewById(R.id.btn_start_wx_plugin_service).setOnClickListener(this);
     }
 
     @Override
@@ -57,9 +58,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()) {
             case R.id.btn_runtime_view_inject:
-                Intent intent = new Intent(MainActivity.this, ViewInjectActivity.class);
+                intent = new Intent(MainActivity.this, ViewInjectActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_start_wx_plugin_service:
+                intent = new Intent(MainActivity.this, WxHongBaoPluginActivity.class);
                 startActivity(intent);
                 break;
             default:

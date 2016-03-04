@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeNotificationStateChanged|typeWindowContentChanged|typeWindowStateChanged"
+    android:accessibilityFeedbackType="feedbackAllMask"
+    android:accessibilityFlags=""
+    android:canRetrieveWindowContent="true"
+    android:description="@string/app_name"
+    android:notificationTimeout="0"
+    android:packageNames="com.tencent.mm" />
+
+    <!-- 1.允许接受的时间类型 2.设置返回用户的形式 3.指定响应某个制定应用 4.响应时间-->
+

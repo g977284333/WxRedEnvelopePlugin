@@ -73,28 +73,24 @@ public class ViewInjectUtil {
             Class<? extends Activity> clazz = activity.getClass();
             Method[] methods = clazz.getMethods();
             //遍历所有的方法
-            for (Method method : methods)
-            {
+            for (Method method : methods) {
                 Annotation[] annotations = method.getAnnotations();
                 //拿到方法上的所有的注解
-                for (Annotation annotation : annotations)
-                {
+                for (Annotation annotation : annotations) {
                     Class<? extends Annotation> annotationType = annotation
                             .annotationType();
                     //拿到注解上的注解
                     BaseEvent eventBaseAnnotation = annotationType
                             .getAnnotation(BaseEvent.class);
                     //如果设置为EventBase
-                    if (eventBaseAnnotation != null)
-                    {
+                    if (eventBaseAnnotation != null) {
                         //取出设置监听器的名称，监听器的类型，调用的方法名
                         String listenerSetter = eventBaseAnnotation
                                 .listenerSetter();
                         Class<?> listenerType = eventBaseAnnotation.listenerType();
                         String methodName = eventBaseAnnotation.methodName();
 
-                        try
-                        {
+                        try {
                             //拿到Onclick注解中的value方法
                             Method aMethod = annotationType
                                     .getDeclaredMethod("value");
@@ -106,18 +102,16 @@ public class ViewInjectUtil {
                             handler.addMethod(methodName, method);
                             Object listener = Proxy.newProxyInstance(
                                     listenerType.getClassLoader(),
-                                    new Class<?>[] { listenerType }, handler);
+                                    new Class<?>[]{listenerType}, handler);
                             //遍历所有的View，设置事件
-                            for (int viewId : viewIds)
-                            {
+                            for (int viewId : viewIds) {
                                 View view = activity.findViewById(viewId);
                                 Method setEventListenerMethod = view.getClass()
                                         .getMethod(listenerSetter, listenerType);
                                 setEventListenerMethod.invoke(view, listener);
                             }
 
-                        } catch (Exception e)
-                        {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
