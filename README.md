@@ -1,2 +1,2 @@
 # WxRedEnvelopePlugin
-a product which can auto grab the red envelope of wx. can use this produc to practice accessibility service
+a product which can auto grab the red envelope of wx. we can use this product to practice accessibility service.
